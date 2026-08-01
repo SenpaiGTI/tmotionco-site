@@ -2,11 +2,13 @@ const nav = document.getElementById('nav');
   const glow = document.getElementById('glow');
   const navlinks = document.getElementById('navlinks');
   const navburger = document.getElementById('navburger');
+  const mobileCtaBar = document.getElementById('mobileCtaBar');
   let navFrame = 0;
   window.addEventListener('scroll', ()=>{
     if(navFrame) return;
     navFrame = window.requestAnimationFrame(()=>{
       nav.classList.toggle('solid', window.scrollY > 40);
+      if(mobileCtaBar) mobileCtaBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
       navFrame = 0;
     });
   }, {passive:true});
