@@ -73,11 +73,18 @@
   .proof-strip{padding:60px 0 10px; background:var(--bg);}
   .strip-eyebrow{text-align:center; margin-bottom:28px; font-size:11px;}
   .proof-strip-row{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  .proof-strip-item{display:flex; align-items:center; gap:14px; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--bg2); transition:border-color .2s ease, transform .2s ease; cursor:pointer;}
+  .proof-strip-item{display:flex; align-items:center; gap:14px; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--bg2); transition:border-color .2s ease, transform .2s ease; cursor:pointer; position:relative; overflow:hidden;}
   .proof-strip-item:hover{border-color:var(--gold-3); transform:translateY(-2px);}
-  .proof-strip-item img{width:52px; height:52px; object-fit:cover; border-radius:10px; flex:0 0 auto; background:#0A0A09;}
+  .psi-logo{width:60px; height:60px; flex:0 0 auto; border-radius:12px; overflow:hidden; background:#0A0A09; display:flex; align-items:center; justify-content:center; border:1px solid var(--line);}
+  .psi-logo img{width:100%; height:100%; object-fit:cover; display:block;}
   .proof-strip-item h4{font-size:14px; font-weight:800; color:var(--white); text-transform:none; margin-bottom:3px;}
   .proof-strip-item p{font-size:12px; color:var(--gray); line-height:1.4;}
+  .proof-strip-item.pulse::after{
+    content:''; position:absolute; inset:0; border-radius:16px;
+    background:radial-gradient(circle, rgba(243,212,138,0.35), transparent 70%);
+    animation:psiPulse .5s ease-out; pointer-events:none;
+  }
+  @keyframes psiPulse{ 0%{opacity:1; transform:scale(0.8);} 100%{opacity:0; transform:scale(1.3);} }
   @media(max-width:760px){ .proof-strip-row{grid-template-columns:1fr;} }
 
   /* PRICING TEASER */

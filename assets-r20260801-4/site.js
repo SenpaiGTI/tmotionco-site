@@ -71,6 +71,14 @@ const nav = document.getElementById('nav');
     }
   });
 
+  document.querySelectorAll('.proof-strip-item').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      el.classList.remove('pulse');
+      void el.offsetWidth; // restart animation if clicked again quickly
+      el.classList.add('pulse');
+    });
+  });
+
   window.addEventListener('hashchange', ()=> showPage(location.hash.replace('#','')));
 
   const io = 'IntersectionObserver' in window
