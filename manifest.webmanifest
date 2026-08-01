@@ -1,0 +1,17 @@
+{
+  "name": "Trevino Motion Co.",
+  "short_name": "T-MOCO",
+  "description": "Marketing and advertising for small businesses ready to stand out.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "assets/brand/tmc-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
