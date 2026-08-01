@@ -77,14 +77,4 @@ const nav = document.getElementById('nav');
       }, {threshold:0.12})
     : {observe(el){el.classList.add('in');}};
 
-  document.querySelectorAll('.field').forEach((field, index)=>{
-    const label = field.querySelector('label');
-    const control = field.querySelector('input, select, textarea');
-    if(label && control){
-      const id = control.id || 'field-'+index;
-      control.id = id;
-      label.setAttribute('for', id);
-    }
-  });
-
   showPage(location.hash.replace('#','') || 'home');
