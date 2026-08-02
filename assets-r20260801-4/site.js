@@ -23,7 +23,7 @@ const nav = document.getElementById('nav');
     navburger.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
   });
 
-  const pages = ['home','about','services','clients','contact','privacy','terms'];
+  const pages = ['home','about','services','clients','merch','contact','privacy','terms'];
   function showPage(name){
     if(!pages.includes(name)) name = 'home';
     pages.forEach(p=>{
