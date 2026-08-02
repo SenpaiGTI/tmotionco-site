@@ -36,8 +36,21 @@ const nav = document.getElementById('nav');
     navlinks.classList.remove('open');
     navburger.setAttribute('aria-expanded', 'false');
     navburger.setAttribute('aria-label', 'Open navigation menu');
-    // re-observe reveal elements on the newly active page
-    document.querySelectorAll('#page-'+name+' .reveal').forEach(el=>io.observe(el));
+    // re-observe reveal elements on the newly active page (double rAF ensures
+    // the browser has flushed layout for the just-shown page before we observe,
+    // since IntersectionObserver can evaluate stale geometry otherwise)
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        const revealEls = document.querySelectorAll('#page-'+name+' .reveal');
+        revealEls.forEach(el=>io.observe(el));
+        // safety net: if an element hasn't revealed itself within 1.5s for any
+        // reason (observer edge case, slow device, etc.), force it visible so
+        // content can never get permanently stuck invisible.
+        setTimeout(()=>{
+          revealEls.forEach(el=>el.classList.add('in'));
+        }, 1500);
+      });
+    });
   }
 
   function go(name){
