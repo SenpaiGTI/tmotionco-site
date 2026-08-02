@@ -124,7 +124,7 @@
 
   /* generic page hero (non-home pages) */
   .page-hero{padding:170px 24px 70px; text-align:left; background:radial-gradient(ellipse 60% 40% at 15% 0%, rgba(199,151,63,0.12), transparent 60%), var(--bg);}
-  .page-hero h1{font-size:clamp(34px,6vw,72px); max-width:900px; text-transform:uppercase;}
+  .page-hero h2{font-size:clamp(34px,6vw,72px); max-width:900px; text-transform:uppercase;}
   .page-hero .sub{max-width:620px; margin-top:20px; font-size:17px;}
 
   section{padding:110px 0; position:relative;}
@@ -278,7 +278,7 @@
   /* ABOUT */
   .about-open{padding:170px 24px 60px; background:radial-gradient(ellipse 60% 45% at 85% 10%, rgba(199,151,63,0.14), transparent 60%), var(--bg);}
   .about-open .mono{margin-bottom:18px; display:block;}
-  .about-open h1{font-size:clamp(34px,6.6vw,80px); max-width:920px;}
+  .about-open h2{font-size:clamp(34px,6.6vw,80px); max-width:920px;}
   .about-open .lede2{max-width:640px; margin-top:24px; font-size:18px; color:var(--gray);}
   .timeline{margin-top:20px;}
   .tl-row{display:grid; grid-template-columns:150px 1fr; gap:28px; padding:30px 0; border-top:1px solid var(--line);}
@@ -358,6 +358,22 @@
     .legal-notice{padding:22px;}
     .legal-section{padding-bottom:27px; margin-bottom:27px;}
   }
+
+  .faq-section{background:var(--bg2);}
+  .faq-list{margin-top:20px; max-width:760px;}
+  .faq-item{border-top:1px solid var(--line);}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:24px 4px; background:none; border:none; cursor:pointer; text-align:left;
+    font-family:'Inter',sans-serif; font-size:17px; font-weight:600; color:var(--white);
+  }
+  .faq-q:hover{color:var(--gold-1);}
+  .faq-icon{font-family:'JetBrains Mono',monospace; font-size:20px; color:var(--gold-1); flex:0 0 auto; transition:transform .25s ease;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease, padding .3s ease;}
+  .faq-item.open .faq-a{max-height:200px; padding-bottom:22px;}
+  .faq-a p{font-size:15px; max-width:640px;}
 
   .cta-block{background:radial-gradient(ellipse 60% 60% at 50% 30%, rgba(199,151,63,0.14), transparent 70%), var(--bg); text-align:center; padding:130px 24px 150px;}
   .cta-block h2{margin:0 auto 22px; max-width:760px; text-transform:uppercase;}

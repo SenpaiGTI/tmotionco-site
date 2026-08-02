@@ -49,6 +49,7 @@ const nav = document.getElementById('nav');
         setTimeout(()=>{
           revealEls.forEach(el=>el.classList.add('in'));
         }, 1500);
+        if (typeof loadVisibleFacebookFeeds === 'function') loadVisibleFacebookFeeds();
       });
     });
   }
@@ -93,6 +94,44 @@ const nav = document.getElementById('nav');
   });
 
   window.addEventListener('hashchange', ()=> showPage(location.hash.replace('#','')));
+
+  // Facebook feed iframes: lazy-loaded manually (not via loading="lazy") since
+  // these iframes live inside pages that start display:none. Native lazy-load
+  // and IntersectionObserver can both misfire on hidden->visible transitions,
+  // so this uses a direct, page-visibility-aware geometry check instead.
+  function loadVisibleFacebookFeeds(){
+    document.querySelectorAll('iframe[data-src]').forEach(iframe=>{
+      // offsetParent is null when the iframe (or an ancestor) is display:none,
+      // which is a reliable way to skip iframes on inactive pages.
+      if(iframe.offsetParent === null) return;
+      const rect = iframe.getBoundingClientRect();
+      const nearViewport = rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5;
+      if(nearViewport){
+        iframe.src = iframe.getAttribute('data-src');
+        iframe.removeAttribute('data-src');
+      }
+    });
+  }
+  let fbFrame = 0;
+  window.addEventListener('scroll', ()=>{
+    if(fbFrame) return;
+    fbFrame = window.requestAnimationFrame(()=>{ loadVisibleFacebookFeeds(); fbFrame = 0; });
+  }, {passive:true});
+
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el=>{
+        el.classList.remove('open');
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 
   const io = 'IntersectionObserver' in window
     ? new IntersectionObserver((entries)=>{
