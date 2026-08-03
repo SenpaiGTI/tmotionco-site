@@ -84,3 +84,4 @@ export async function onRequestGet({ env }) {
     });
   }
 }
+// redeploy trigger: pick up PRINTIFY_SHOP_ID secret
