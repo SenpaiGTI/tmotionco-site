@@ -57,6 +57,14 @@ export async function onRequestGet({ request, env }) {
       const data = await pf(env, `/catalog/blueprints/${bpId}/print_providers/${providerId}/variants.json`);
       return json(data);
     }
+    if (action === "product_detail") {
+      const shopId = await getShopId(env);
+      const productId = url.searchParams.get("product_id");
+      const data = await pf(env, `/shops/${shopId}/products.json`);
+      const list = data.data || data;
+      const product = list.find((p) => p.id === productId);
+      return json(product || { error: "not found" });
+    }
     if (action === "products") {
       const shopId = await getShopId(env);
       const data = await pf(env, `/shops/${shopId}/products.json`);
