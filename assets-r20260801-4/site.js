@@ -23,7 +23,7 @@ const nav = document.getElementById('nav');
     navburger.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
   });
 
-  const pages = ['home','about','services','clients','merch','contact','privacy','terms'];
+  const pages = ['home','about','services','clients','merch','quote','contact','privacy','terms'];
   function showPage(name){
     if(!pages.includes(name)) name = 'home';
     pages.forEach(p=>{
@@ -132,6 +132,33 @@ const nav = document.getElementById('nav');
       }
     });
   });
+
+  const quoteForm = document.getElementById('quote-form');
+  if(quoteForm){
+    quoteForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const f = new FormData(quoteForm);
+      const get = (k)=> (f.get(k) || '').toString().trim();
+      const lines = [
+        'Name: ' + get('q-name'),
+        'Business: ' + get('q-business'),
+        'Email: ' + get('q-email'),
+        'Phone: ' + get('q-phone'),
+        'Service: ' + get('q-service'),
+        'Budget: ' + get('q-budget'),
+        'Timeline: ' + get('q-timeline'),
+        'Current website: ' + (get('q-current-site') || 'N/A'),
+        '',
+        'Project details:',
+        get('q-details')
+      ];
+      const subject = 'Quote Request — ' + (get('q-business') || get('q-name') || 'New Project');
+      const body = lines.join('\n');
+      window.location.href = 'mailto:ethanjtrevino@tmotionco.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      const status = document.getElementById('quote-status');
+      if(status){ status.textContent = 'Opening your email app to send this — if nothing opens, email ethanjtrevino@tmotionco.com directly.'; status.classList.add('show'); }
+    });
+  }
 
   const io = 'IntersectionObserver' in window
     ? new IntersectionObserver((entries)=>{

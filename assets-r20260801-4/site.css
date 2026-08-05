@@ -491,3 +491,29 @@
   .merch-grid{gap:18px;}
   .merch-card-body{padding:18px;}
 }
+
+/* QUOTE FORM */
+.quote-form{max-width:760px; display:flex; flex-direction:column; gap:22px; margin-top:12px;}
+.quote-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.quote-field{display:flex; flex-direction:column; gap:8px;}
+.quote-field label{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-1);}
+.quote-field input, .quote-field select, .quote-field textarea{
+  width:100%; background:var(--bg); border:1px solid var(--line); color:var(--white);
+  padding:14px 16px; border-radius:10px; font-family:'Inter',sans-serif; font-size:14px;
+  transition:border-color .2s ease;
+}
+.quote-field select{
+  appearance:none; -webkit-appearance:none; cursor:pointer; padding-right:36px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C7973F' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 14px center;
+}
+.quote-field textarea{resize:vertical; min-height:120px; font-family:'Inter',sans-serif;}
+.quote-field input:hover, .quote-field select:hover, .quote-field textarea:hover,
+.quote-field input:focus, .quote-field select:focus, .quote-field textarea:focus{border-color:var(--gold-2); outline:none;}
+.quote-field input::placeholder, .quote-field textarea::placeholder{color:var(--gray); opacity:0.6;}
+.quote-status{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gold-1); display:none; margin-top:-6px;}
+.quote-status.show{display:block;}
+.quote-note{max-width:640px; margin-bottom:8px;}
+@media(max-width:700px){
+  .quote-row{grid-template-columns:1fr;}
+}

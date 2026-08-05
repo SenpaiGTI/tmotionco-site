@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets-r20260801-4/site.css?v=20260801.23">
+<link rel="stylesheet" href="assets-r20260801-4/site.css?v=20260801.24">
 </head>
 <body>
 
@@ -40,6 +40,7 @@
     <a href="#services" data-link="services">Services</a>
     <a href="#clients" data-link="clients">Clients</a>
     <a href="#merch" data-link="merch">Merch</a>
+    <a href="#quote" data-link="quote">Get a Quote</a>
     <a href="#contact" data-link="contact" class="navcta">Start a Project</a>
   </div>
   <button class="navburger" id="navburger" aria-label="Open navigation menu" aria-controls="navlinks" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -458,6 +459,7 @@
       <h2>Ready to pick a plan?</h2>
       <p class="lede">Tell us where your business is and we'll tell you which one fits.</p>
       <a href="#contact" class="btn-primary" data-link="contact">Start a Project</a>
+      <a href="#quote" class="btn-outline" data-link="quote" style="margin-left:14px;">Get a Custom Quote</a>
     </div>
   </section>
 </section>
@@ -658,6 +660,100 @@
       <p class="sub" style="max-width:640px;margin-bottom:24px;">Every dollar from this shop goes straight back into TMC — better software, gear, and equipment that make the work we do for our clients better. Buying a shirt isn't just merch. It's investing in the studio.</p>
       <div id="merch-status" class="mono" style="margin-bottom:24px;">Loading products…</div>
       <div id="merch-grid" class="merch-grid"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="page" id="page-quote">
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="mono">Get a Quote</span>
+      <h2>Tell us what you're building.</h2>
+      <p class="sub">You won't find a generic price sheet here — every project gets scoped to the brand, budget, and goals behind it. Fill this out and we'll follow up with real numbers, not a form-letter reply.</p>
+    </div>
+  </div>
+
+  <section class="tight reveal">
+    <div class="wrap">
+      <form class="quote-form" id="quote-form">
+        <div class="quote-row">
+          <div class="quote-field">
+            <label for="q-name">Your name</label>
+            <input type="text" id="q-name" name="q-name" required placeholder="Full name">
+          </div>
+          <div class="quote-field">
+            <label for="q-business">Business name</label>
+            <input type="text" id="q-business" name="q-business" required placeholder="Your company">
+          </div>
+        </div>
+
+        <div class="quote-row">
+          <div class="quote-field">
+            <label for="q-email">Email</label>
+            <input type="email" id="q-email" name="q-email" required placeholder="you@business.com">
+          </div>
+          <div class="quote-field">
+            <label for="q-phone">Phone</label>
+            <input type="tel" id="q-phone" name="q-phone" placeholder="(555) 555-5555">
+          </div>
+        </div>
+
+        <div class="quote-row">
+          <div class="quote-field">
+            <label for="q-service">What do you need?</label>
+            <select id="q-service" name="q-service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Social Media Management</option>
+              <option>Paid Ad Campaigns</option>
+              <option>Content &amp; Video</option>
+              <option>Website Build &amp; Design</option>
+              <option>Website Design &amp; Management</option>
+              <option>Clothing Line Setup &amp; Branding</option>
+              <option>Full Package (everything)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="quote-field">
+            <label for="q-budget">Monthly budget</label>
+            <select id="q-budget" name="q-budget" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>Under $500/mo</option>
+              <option>$500–$1,000/mo</option>
+              <option>$1,000–$2,500/mo</option>
+              <option>$2,500+/mo</option>
+              <option>One-time project only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="quote-row">
+          <div class="quote-field">
+            <label for="q-timeline">Timeline</label>
+            <select id="q-timeline" name="q-timeline" required>
+              <option value="" disabled selected>Select a timeline</option>
+              <option>ASAP</option>
+              <option>Within a month</option>
+              <option>1–3 months out</option>
+              <option>Just researching</option>
+            </select>
+          </div>
+          <div class="quote-field">
+            <label for="q-current-site">Current website (if any)</label>
+            <input type="text" id="q-current-site" name="q-current-site" placeholder="yourbusiness.com">
+          </div>
+        </div>
+
+        <div class="quote-field">
+          <label for="q-details">Project details</label>
+          <textarea id="q-details" name="q-details" required placeholder="What are you trying to accomplish? Who's the audience? Anything you've already tried?"></textarea>
+        </div>
+
+        <div>
+          <button type="submit" class="btn-primary">Send Request</button>
+          <p class="quote-status" id="quote-status"></p>
+        </div>
+      </form>
     </div>
   </section>
 </section>
@@ -892,7 +988,7 @@
   <a href="#contact" class="btn-primary" data-link="contact">Book a Free Call</a>
 </div>
 
-<script src="assets-r20260801-4/site.js?v=20260801.23" defer></script>
+<script src="assets-r20260801-4/site.js?v=20260801.24" defer></script>
 <script src="assets-r20260801-4/merch.js?v=3" defer></script>
 
 
